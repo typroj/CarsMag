@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
-import {Mailer} from './mailer';
-import {AdvanceMailer} from './advance-mailer';
+import {ApiService} from './service/api-service';
+import {Router} from '@angular/router';
+import {UsersList} from '../model/UserList';
 
 @Component({
   selector: 'app-root',
@@ -8,19 +9,5 @@ import {AdvanceMailer} from './advance-mailer';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
 
-  confirmationOutput: string;
-
-  constructor(qwqlwh: Mailer) {
-    console.log('AppComponent constrcutor called');
-  }
-
-  onConfimationOutput(xyz) {
-    if (xyz === 'ok') {
-      console.log('Delete the video');
-    } else {
-      console.log('Don\'t delete the video');
-    }
-  }
 }

@@ -13,13 +13,6 @@ export class ApiService {
   }
 
   getUser() {
-    this.httpClient.get('https://randomuser.me/api?results=20').subscribe(value => {
-      // this.users = value.results;
-      console.log(value.results);
-      this.arrUsers = value.results;
-      this.loading = false;
-      console.log(this.loading);
-    });
-    return this.arrUsers;
+    return this.httpClient.get('https://randomuser.me/api?results=20');
   }
 }

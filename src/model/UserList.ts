@@ -1,5 +1,9 @@
 export interface UsersList {
-  name: string;
+  name: {
+    title: string,
+    first: string,
+    last: string,
+  };
   gender: string;
   email: string;
   login: {
@@ -7,5 +11,9 @@ export interface UsersList {
     password: string;
   };
   dob: string;
-  pictureURL: string;
+  picture: {
+    large: string,
+    medium: string,
+    thumbnail: string
+  };
 }
