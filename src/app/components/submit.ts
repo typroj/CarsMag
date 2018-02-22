@@ -21,9 +21,5 @@ export class SubmitComponent {
 
   formSubmit() {
     this.route.navigate(['user']);
-    this.service.getUser().subscribe(value => {
-     console.log(value.results);
-    this.loading = false;
-    });
   }
 }
