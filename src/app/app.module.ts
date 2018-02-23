@@ -12,6 +12,7 @@ import {UsersComponent} from './components/user.component';
 import {routes} from './routes';
 import {RouterModule} from '@angular/router';
 import {SubmitComponent} from './components/submit';
+import {Guard} from './route-guard/routerGuard';
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import {SubmitComponent} from './components/submit';
     RouterModule.forRoot(routes),
     ReactiveFormsModule
   ],
-  providers: [ApiService],
+  providers: [ApiService, Guard, UsersComponent, SubmitComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

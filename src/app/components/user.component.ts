@@ -1,24 +1,31 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../service/api-service';
 import {UsersList} from '../../model/UserList';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/map';
+import {Router} from '@angular/router';
+import {SubmitComponent} from './submit';
+import {Subject} from 'rxjs/Subject';
 
 @Component({
   selector: 'app-users',
   template: `
-    <mat-spinner *ngIf="loading"></mat-spinner>
     <mat-card *ngFor="let user of arr" matRipple class="mainCard">
-      <img [src]="user.picture.thumbnail" alt="">
-      <mat-card-header>
-        <mat-card-title>{{user.name.title}} {{user.name.first}} {{user.name.last}}</mat-card-title>
-      </mat-card-header>
+    <img [src]="user.picture.thumbnail" alt="">
+    <mat-card-header>
+    <mat-card-title>{{user.name.title}} {{user.name.first}} {{user.name.last}}</mat-card-title>
+    </mat-card-header>
     </mat-card>
   `,
   styles: [`
     :host {
-  }
-img{
-  margin: 10px;
-}
+    }
+
+    img {
+      margin: 10px;
+    }
+
     .mainCard {
       cursor: pointer;
       background: linear-gradient(#ffffff, #f2f2f2);
@@ -32,14 +39,15 @@ img{
   ]
 })
 
-export class UsersComponent {
+export class UsersComponent implements OnInit {
   arr: UsersList [];
-  loading = true;
 
-  constructor(private service: ApiService) {
+  constructor(private submit: SubmitComponent, private service: ApiService) {
+  }
+
+  ngOnInit() {
     this.service.getUser().subscribe(value => {
-      this.arr = value.results;
-      this.loading = false;
+      this.arr = value;
     });
   }
 }
