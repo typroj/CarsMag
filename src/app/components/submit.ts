@@ -25,13 +25,10 @@ export class SubmitComponent {
   }
 
   formSubmit() {
-<<<<<<< HEAD
     this.service.getUser().map((value) => {
       this.load$.next(true);
       this.router.navigate(['user']);
     }).subscribe();
-=======
-    this.route.navigate(['user']);
->>>>>>> 498fb737f261a24bb3796d23c9de2ee5006f2cc3
   }
 }
+
